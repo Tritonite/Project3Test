@@ -1,58 +1,57 @@
 package projectTest;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-
-import javax.swing.JComponent;
+import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-public class StatisticsPanel extends JFrame{
+public class StatisticsPanel extends JPanel{
 	
-	JPanel panel2 = new JPanel(new GridBagLayout()); 
-	
-	public StatisticsPanel(){
-		
-		
-	
-
-	
-	
-	GridBagConstraints gbc = new GridBagConstraints(); 
-	gbc.insets = new Insets(5,5,5,10); 
+	// Title for Statistics panel
+	JLabel label3 = new JLabel("Statistics");
 	
 	JRadioButton min = new JRadioButton("MINIMUM");
 	JRadioButton max = new JRadioButton("MAXIMUM"); 
 	JRadioButton avg = new JRadioButton("AVERAGE"); 
 	
-	JLabel label3 = new JLabel("Statistics"); 
+	
+	
+	public StatisticsPanel(){
+		
+	super(); 
+		
+		
+	setLayout(new GridLayout(4,0));
+
+	
+
+	// To set the panel to align at the top 
+	label3.setVerticalAlignment(JRadioButton.TOP); 
+	min.setVerticalAlignment(JRadioButton.TOP);
+	max.setVerticalAlignment(JRadioButton.TOP);
+	avg.setVerticalAlignment(JRadioButton.TOP);
+	
+	
+	
+	add(label3); 
 	
 	// min placement 
-			gbc.gridx = 1; 
-			gbc.gridy = 3; 
-			panel2.add(min, gbc); 
+	add(min); 
 			
-			// avg placement
-			gbc.gridx = 1; 
-			gbc.gridy = 8; 
-			panel2.add(avg, gbc); 
+	// avg placement
+	add(avg); 
 			
-			// max placement 
-			gbc.gridx = 1; 
-			gbc.gridy = 11; 
-			panel2.add(max, gbc); 
+	// max placement 
+		
+	add(max); 
+	
+	max.setSelected(true); 
 			
 			
 	}
 	
-	public JComponent getStatisticsPanel()
-	{
-		return panel2; 
-	}
-	
+
 	
 
 }

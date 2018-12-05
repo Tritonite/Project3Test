@@ -13,33 +13,45 @@ import javax.swing.JPanel;
 
 public class MesonetFrame extends JFrame {
 	
-	JPanel panel1 = new JPanel(); 
-	JPanel panel2 = new JPanel(new GridBagLayout()); 
+	// Mesonet panel
+	JPanel panel1 = new JPanel();
 	
-	MesonetFrame()
+	MesonetFrame(String title)
 	{
-		super("Oklahoma Mesonet - Statistics Calculator"); 
+		super(title); 
 		setSize(600, 400); 
 		setDefaultCloseOperation(EXIT_ON_CLOSE); 
-		
+		// Making Menu Object
 		MenuBar test = new MenuBar(); 
 		setJMenuBar(test);
 		
+		// Making Parameter panel object 
+		ParameterPanel ppanel = new ParameterPanel(); 
+		// Making Statistics panel object 
 		StatisticsPanel spanel = new StatisticsPanel(); 
+		// New Panel to combine parameter and statistics 
+		JPanel paramStats = new JPanel(new GridBagLayout()); 
+		paramStats.add(ppanel);
+		GridBagConstraints gbc = new GridBagConstraints(); 
+		gbc.gridx = 1; 
+		gbc.gridy = 0; 
+		paramStats.add(spanel,gbc);
 		
 		
 		
-				
+		// North Panel		
 		JLabel label = new JLabel("Mesonet - We don't set records, we report them!"); 
 		
+		// Adding the panels 
 		panel1.add(label); 
-		add(panel1, BorderLayout.NORTH); 
-		
-		add(panel2, BorderLayout.WEST);
+		add(panel1, BorderLayout.NORTH);
+		add(paramStats, BorderLayout.WEST); 
+	
 		
 		
 	}
 	
+	// Class for creating the file menu bar 
 	public class FileMenuBar {
 		public FileMenuBar() {
 			
@@ -54,9 +66,10 @@ public class MesonetFrame extends JFrame {
 
 		}
 
+	// Tests the program 
 	public static void main(String[] args) {
 		
-			MesonetFrame test = new MesonetFrame(); 
+			MesonetFrame test = new MesonetFrame("Oklahoma Mesonet - Statistics Calculator"); 
 			test.setVisible(true); 
 
 	}
